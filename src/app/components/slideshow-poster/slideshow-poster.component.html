@@ -1,0 +1,9 @@
+<swiper  
+  [slidesPerView]="2.5"
+  [spaceBetween]="10">
+  <ng-template swiperSlide *ngFor="let movie of movies">
+    <ion-card (click)="movieDetails(movie.id)">
+      <img class="poster" [src]="movie.poster_path| image" alt="">
+    </ion-card>
+  </ng-template>
+</swiper>

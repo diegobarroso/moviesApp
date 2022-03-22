@@ -1,0 +1,32 @@
+<swiper #swiper
+  [slidesPerView]="1.1"
+  [spaceBetween]="10"
+  *ngIf="slider; else vertical"
+  >
+  <ng-template swiperSlide *ngFor="let movie of movies">
+    <ion-card mode="md" (click)="movieDetails(movie.id)">
+      <img [src]="movie.backdrop_path | image" [alt]="movie.title">
+      <ion-card-header>
+        <ion-label>{{movie.title}}</ion-label>
+      </ion-card-header>
+    </ion-card>
+  </ng-template>
+  <ng-template swiperSlide *ngIf="showLoadMore">
+    <ion-button (click)="loadMore()">
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+    </ion-button>
+  </ng-template>
+</swiper>
+
+<ng-template #vertical>
+  <ion-card
+        mode="md" 
+        *ngFor="let movie of movies" 
+        (click)="movieDetails(movie.id)">
+    <img [src]="movie.backdrop_path | image" [alt]="movie.title">
+    <ion-card-header>
+      <ion-label>{{movie.title}}</ion-label>
+    </ion-card-header>
+  </ion-card>
+</ng-template>
+
